@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const Global = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-  
+
 html {
     font-size: 100%;
     box-sizing: border-box;
@@ -21,8 +21,9 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     min-height: 100vh;
-    background-color: #f4f4f4;
+    
   }
   
   h1,
@@ -46,4 +47,10 @@ html {
   display:block;
   width:100%;
   }
+ ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+ }
+  
 `;
