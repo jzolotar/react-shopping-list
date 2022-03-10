@@ -1,9 +1,21 @@
+import { BiEdit } from 'react-icons/bi';
+import { BiTrash } from 'react-icons/bi';
 import { StyledList } from './styles/List.styled';
 
 const List = () => {
   return (
     <StyledList>
-      <h3>Test</h3>
+      <li>
+        <p>Task name</p>
+        <div>
+          <button className='edit'>
+            <BiEdit />
+          </button>
+          <button className='remove'>
+            <BiTrash />
+          </button>
+        </div>
+      </li>
     </StyledList>
   );
 };
