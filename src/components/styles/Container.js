@@ -7,4 +7,5 @@ export const Container = styled.section`
   margin-top: 8rem;
   padding: 1rem;
   background-color: #f3f3f3;
+  border-radius: 0.5rem;
 `;
