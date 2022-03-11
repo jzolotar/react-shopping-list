@@ -1,12 +1,17 @@
 import { StyledForm } from './styles/Form.styled';
 
-const Form = () => {
+const Form = ({ onSubmitHandler, onChangeHandler, name, isEditing }) => {
   return (
-    <StyledForm>
-      <h1>TODO LIST</h1>
+    <StyledForm onSubmit={onSubmitHandler}>
+      <h1>SHOPPING LIST</h1>
       <div>
-        <input type='text' />
-        <button type='submit'>Add</button>
+        <input
+          onChange={onChangeHandler}
+          type='text'
+          placeholder='e.g. milk'
+          value={name}
+        />
+        <button type='submit'>{isEditing ? 'Edit' : 'Add'}</button>
       </div>
     </StyledForm>
   );

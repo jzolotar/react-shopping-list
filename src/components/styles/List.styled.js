@@ -18,7 +18,7 @@ export const StyledList = styled.ul`
 
     p {
       font-size: 1rem;
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
     button {
       background: transparent;

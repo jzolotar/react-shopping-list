@@ -2,20 +2,31 @@ import { BiEdit } from 'react-icons/bi';
 import { BiTrash } from 'react-icons/bi';
 import { StyledList } from './styles/List.styled';
 
-const List = () => {
+const List = ({ list, onRemoveItemHandler, onEditItemHandler }) => {
   return (
     <StyledList>
-      <li>
-        <p>Task name</p>
-        <div>
-          <button className='edit'>
-            <BiEdit />
-          </button>
-          <button className='remove'>
-            <BiTrash />
-          </button>
-        </div>
-      </li>
+      {list.map((item) => {
+        const { id, title } = item;
+        return (
+          <li id={id}>
+            <p>{title}</p>
+            <div>
+              <button
+                onClick={() => onEditItemHandler(item.id)}
+                className='edit'
+              >
+                <BiEdit />
+              </button>
+              <button
+                onClick={() => onRemoveItemHandler(item.id)}
+                className='remove'
+              >
+                <BiTrash />
+              </button>
+            </div>
+          </li>
+        );
+      })}
     </StyledList>
   );
 };
