@@ -7,6 +7,15 @@ import List from './components/List';
 import ClearAll from './components/ClearAll';
 import Alert from './components/Alert';
 import { useState } from 'react';
+import { useEffect } from 'react';
+
+const getLocalStorageData = () => {
+  let list = localStorage.getItem('list');
+  if (list) {
+    return JSON.parse(localStorage.getItem('list'));
+  }
+  return [];
+};
 function App() {
   //states
   const [name, setName] = useState('');
@@ -16,7 +25,7 @@ function App() {
     status: '',
   });
 
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(getLocalStorageData());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
 
@@ -76,6 +85,10 @@ function App() {
   const editAlert = (show = false, text = '', status = '') => {
     setAlert({ show, text, status });
   };
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
 
   return (
     <Fragment>
