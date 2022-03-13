@@ -25,7 +25,7 @@ function App() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (!name) {
-      editAlert(true, 'please enter some value', 'danger');
+      editAlert(true, 'please enter value', 'danger');
     }
 
     if (name && isEditing) {
@@ -69,7 +69,7 @@ function App() {
   };
 
   const onClearItemsHandler = () => {
-    editAlert(true, 'all items have been removed', 'danger');
+    editAlert(true, 'items removed', 'danger');
     setList([]);
   };
 

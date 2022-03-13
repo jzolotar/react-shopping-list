@@ -9,9 +9,12 @@ export const StyledForm = styled.form`
 
   h1 {
     letter-spacing: 0.3rem;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     color: #222831;
     margin-bottom: 1rem;
+    @media screen and (max-width: 420px) {
+      font-size: 1.3rem;
+    }
   }
   div {
     margin: 0;
