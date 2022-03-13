@@ -6,6 +6,7 @@ const Form = ({ onSubmitHandler, onChangeHandler, name, isEditing }) => {
       <h1>SHOPPING LIST</h1>
       <div>
         <input
+          autoFocus
           onChange={onChangeHandler}
           type='text'
           placeholder='e.g. milk'

@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import { StyledAlert } from './styles/Alert.styled';
-const Alert = () => {
+const Alert = ({ alert, removeAlert, list }) => {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      removeAlert();
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [list, removeAlert]);
   return (
     <StyledAlert>
-      <p>Alert</p>
+      <p className={alert.status}>{alert.text}</p>
     </StyledAlert>
   );
 };

@@ -8,7 +8,7 @@ const List = ({ list, onRemoveItemHandler, onEditItemHandler }) => {
       {list.map((item) => {
         const { id, title } = item;
         return (
-          <li id={id}>
+          <li key={id}>
             <p>{title}</p>
             <div>
               <button

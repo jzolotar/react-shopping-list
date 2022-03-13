@@ -10,7 +10,12 @@ import { useState } from 'react';
 function App() {
   //states
   const [name, setName] = useState('');
-  const [alert, setAlert] = useState({ show: false, text: '', status: '' });
+  const [alert, setAlert] = useState({
+    show: false,
+    text: '',
+    status: '',
+  });
+
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
@@ -20,7 +25,7 @@ function App() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (!name) {
-      console.log('alert');
+      editAlert(true, 'please enter some value', 'danger');
     }
 
     if (name && isEditing) {
@@ -33,6 +38,7 @@ function App() {
           }
         })
       );
+      editAlert(true, 'item has been updated', 'success');
       setIsEditing(false);
       setEditID(null);
       setName('');
@@ -41,6 +47,7 @@ function App() {
     if (name && !isEditing) {
       const newItem = { id: uuid(), title: name };
       setList([...list, newItem]);
+      editAlert(true, 'item has been added', 'success');
       setName('');
       setEditID(null);
     }
@@ -57,19 +64,26 @@ function App() {
     setName(editingItem.title);
   };
   const onRemoveItemHandler = (id) => {
-    console.log(id);
+    editAlert(true, 'item has been removed', 'danger');
     setList(list.filter((item) => item.id !== id));
   };
 
   const onClearItemsHandler = () => {
+    editAlert(true, 'all items have been removed', 'danger');
     setList([]);
+  };
+
+  const editAlert = (show = false, text = '', status = '') => {
+    setAlert({ show, text, status });
   };
 
   return (
     <Fragment>
       <GlobalStyles />
       <Container>
-        {alert.show && <Alert />}
+        {alert.show && (
+          <Alert alert={alert} removeAlert={editAlert} list={list} />
+        )}
         <Form
           onChangeHandler={onChangeHandler}
           onSubmitHandler={onSubmitHandler}
